@@ -64,7 +64,7 @@ const ticks: Tick[] = [
 ];
 const tokenLogoUrls: Record<string, string> = {
   PUMP: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-UhKbHj3DDFcpMrys8Ig2ikIVmRLYQ7.png",
-  SOL: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-8lfE67d4Mo4zvkxufmtM95scKji2QU.png",
+  SOL: "/solana-logo.png",
 };
 
 function Coin({ s, size = 14 }: { s: string; size?: number }) {
@@ -291,14 +291,14 @@ type Tx = {
   network: "hyperliquid" | "ethereum" | "base" | "arbitrum" | "optimism" | "solana";
 };
 const txs: Tx[] = [
-  { age: "6h ago", type: "Open Long", asset: "BTC", via: "Hyperliquid", size: "0.50 BTC", value: "$42,180.21", fee: "$12.65", txid: "0x8dd3b7dfeb1fcfa09bb7f9bb36c242e63e096c5be08ad4c299088c4a3f5143b1", status: "Filled", network: "hyperliquid" },
-  { age: "5h ago", type: "Swap", asset: "ETH → USDC", via: "Uniswap · Ethereum", size: "4.20 ETH", value: "$13,440.00", fee: "$8.75", txid: "0x2b2199aea1748f3ba21dd912da0de4b585ba2c0c4d51f936eb4fdbf65ade9f98", status: "Confirmed", network: "ethereum" },
-  { age: "4h ago", type: "Withdraw", asset: "USDC", via: "Base", size: "5,000.00 USDC", value: "$5,000.00", fee: "$0.35", txid: "0x1a5cc9feb9c077d4a85b3cf6d4b61c02b4b95fc777810b006d156dd3d9d2d086", status: "Completed", network: "base" },
-  { age: "3h ago", type: "Receive", asset: "ARB", via: "Arbitrum", size: "14,250.00 ARB", value: "$12,825.00", fee: "—", txid: "0x707a8cdcf556a5dd5bb3d78c7842064b2659c5665594b2104f65910ae3eba699", status: "Received", network: "arbitrum" },
-  { age: "2h ago", type: "Open Long", asset: "LINK", via: "Hyperliquid", size: "700.00 LINK", value: "$10,402.00", fee: "$3.12", txid: "0xcf643d912484e4dda569acf74ae968b850e3e754071f503589bb0cd51a85cc6b", status: "Filled", network: "hyperliquid" },
-  { age: "1h ago", type: "Swap", asset: "LINK → USDC", via: "Uniswap · Ethereum", size: "350.00 LINK", value: "$5,201.00", fee: "$4.50", txid: "0xc38e1e3f78d7e0a78727ad190cb70ab7dae7fc17253426f44ea981f61929e362", status: "Confirmed", network: "ethereum" },
-  { age: "42m ago", type: "Withdraw", asset: "USDT", via: "Optimism", size: "2,750.00 USDT", value: "$2,750.00", fee: "$0.08", txid: "0xf05bef9596dc28d0d166c2d3844a062b9a6d59b0c8acd3e8afb60f4cb493f0f9", status: "Completed", network: "optimism" },
-  { age: "25m ago", type: "Close Long", asset: "BTC", via: "Hyperliquid", size: "0.125 BTC", value: "$10,840.00", fee: "$3.25", txid: "0x9440c1b47049c3d7a826d41066f82f8b386507fade08cda3a70ced7006929977", status: "Filled", network: "hyperliquid" },
+  { age: "1w ago", type: "Open Long", asset: "BTC", via: "Hyperliquid", size: "0.50 BTC", value: "$42,180.21", fee: "$12.65", txid: "0x8dd3b7dfeb1fcfa09bb7f9bb36c242e63e096c5be08ad4c299088c4a3f5143b1", status: "Filled", network: "hyperliquid" },
+  { age: "5d ago", type: "Swap", asset: "ETH → USDC", via: "Uniswap · Ethereum", size: "4.20 ETH", value: "$13,440.00", fee: "$8.75", txid: "0x2b2199aea1748f3ba21dd912da0de4b585ba2c0c4d51f936eb4fdbf65ade9f98", status: "Confirmed", network: "ethereum" },
+  { age: "4d ago", type: "Withdraw", asset: "USDC", via: "Base", size: "5,000.00 USDC", value: "$5,000.00", fee: "$0.35", txid: "0x1a5cc9feb9c077d4a85b3cf6d4b61c02b4b95fc777810b006d156dd3d9d2d086", status: "Completed", network: "base" },
+  { age: "3d ago", type: "Receive", asset: "ARB", via: "Arbitrum", size: "14,250.00 ARB", value: "$12,825.00", fee: "—", txid: "0x707a8cdcf556a5dd5bb3d78c7842064b2659c5665594b2104f65910ae3eba699", status: "Received", network: "arbitrum" },
+  { age: "2d ago", type: "Open Long", asset: "LINK", via: "Hyperliquid", size: "700.00 LINK", value: "$10,402.00", fee: "$3.12", txid: "0xcf643d912484e4dda569acf74ae968b850e3e754071f503589bb0cd51a85cc6b", status: "Filled", network: "hyperliquid" },
+  { age: "1d ago", type: "Swap", asset: "LINK → USDC", via: "Uniswap · Ethereum", size: "350.00 LINK", value: "$5,201.00", fee: "$4.50", txid: "0xc38e1e3f78d7e0a78727ad190cb70ab7dae7fc17253426f44ea981f61929e362", status: "Confirmed", network: "ethereum" },
+  { age: "19h ago", type: "Withdraw", asset: "USDT", via: "Optimism", size: "2,750.00 USDT", value: "$2,750.00", fee: "$0.08", txid: "0xf05bef9596dc28d0d166c2d3844a062b9a6d59b0c8acd3e8afb60f4cb493f0f9", status: "Completed", network: "optimism" },
+  { age: "14h ago", type: "Close Long", asset: "BTC", via: "Hyperliquid", size: "0.125 BTC", value: "$10,840.00", fee: "$3.25", txid: "0x9440c1b47049c3d7a826d41066f82f8b386507fade08cda3a70ced7006929977", status: "Filled", network: "hyperliquid" },
   { age: "8m ago", type: "Receive", asset: "$PUMP", via: "Solana", size: "19,913,625.40", value: "$50,073.79", fee: "—", txid: "XV3gj6wKMhFhhK7TPGbs9bidwSSmQQEYv5doGnrs7PfSHaQH3TK2CWNC99EgNsyurWgrNSfqdsVU6vUna1Y9fif3", status: "Received", network: "solana" },
   { age: "7m ago", type: "Swap", asset: "$PUMP → $SOL", via: "Jupiter", size: "4,978,406.35", value: "$12,505.00", fee: "$0.01", txid: "bDbyc6TirJmeouY8XjUdMSdor7JKHCNsjHZenfBEPEcgaERK2VAVPUtqchUJo71Srzfyqyg3haM9rSmAVF679yqt", status: "Confirmed", network: "solana" },
   { age: "5m ago", type: "Swap", asset: "$PUMP → $SOL", via: "Jupiter", size: "4,967,831.20", value: "$12,530.00", fee: "$0.01", txid: "Jve34h3ugWuo1c49tHChhsZDaB5YVHMJ42zPwasbL2bVPrKis5tqwH7PiSXB7Mu6XgZDof11Lbz2WhBmqicywcwT", status: "Confirmed", network: "solana" },
