@@ -320,7 +320,7 @@ function TransactionsTable() {
     <table className="mt-5 w-full text-[9px]">
       <thead><tr className="text-[8.5px] text-foreground/90">{heads.map((h, i) => <th key={h} className={`clk pb-3 font-normal hover:text-foreground ${i < 4 ? "text-left" : "text-right"} ${i === 0 ? "pl-2.5" : ""}`}>{h}</th>)}</tr></thead>
       <tbody>
-        {txs.map((t) => {
+        {[...txs].reverse().map((t) => {
           const tone = t.type.includes("Long") || t.type === "Deposit" || t.type === "Receive" ? "text-gain" : t.type.includes("Short") ? "text-loss" : t.type === "Swap" ? "text-brand" : "text-gold";
           const statusTone = t.status === "Pending" || t.status === "Open" ? "text-gold" : t.status === "Cancelled" ? "text-loss" : "text-gain";
           return (
