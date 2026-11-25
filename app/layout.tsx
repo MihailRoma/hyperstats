@@ -3,8 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Hyperstats Wallet | Wallet Analytics',
-  description: 'Detailed Hyperliquid wallet performance, trading activity, and position analytics.',
+  title: 'Hyperliquid Wallet | Hyperstats',
+  description: 'Live wallet performance, positions, P&L, and trading activity for the selected Hyperliquid wallet.',
   applicationName: 'Hyperstats',
   generator: 'v0.app',
   icons: {
