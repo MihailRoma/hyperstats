@@ -62,8 +62,17 @@ const ticks: Tick[] = [
   ["ETH", "Reduced", "0x51b9…3bc1", "+$2.97K", "4m"],
   ["SOL", "Short", "0x7a26…4f8e", "$88.2K", "5m"],
 ];
+const tokenLogoUrls: Record<string, string> = {
+  PUMP: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-UhKbHj3DDFcpMrys8Ig2ikIVmRLYQ7.png",
+  SOL: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-8lfE67d4Mo4zvkxufmtM95scKji2QU.png",
+};
+
 function Coin({ s, size = 14 }: { s: string; size?: number }) {
-  return <img src={`https://app.hyperliquid.xyz/coins/${s}.svg`} alt={`${s} logo`} width={size} height={size} loading="lazy" style={{ width: size, height: size }} className="shrink-0 rounded-full bg-chip-strong" />;
+  const ticker = s.replace(/^\$/, "");
+  const src = tokenLogoUrls[ticker] ?? `https://app.hyperliquid.xyz/coins/${ticker}.svg`;
+  const shape = ticker === "PUMP" ? "rounded-md" : "rounded-full";
+
+  return <img src={src} alt={`${ticker} logo`} width={size} height={size} loading="lazy" decoding="async" style={{ width: size, height: size }} className={`shrink-0 ${shape} bg-chip-strong object-contain ring-1 ring-background`} />;
 }
 function Ticker() {
   const row = [...ticks, ...ticks];
@@ -271,38 +280,32 @@ function PositionsTable() {
 
 type Tx = [string, string, string, string, string, string, string, string];
 const txs: Tx[] = [
-  ["22:38:12", "Open Long", "HYPE", "1,240.5", "$42,180.21", "$12.65", "0x9f3c2a71e4b05d8a6c1f7e2b9d0a34c5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1", "Filled"],
-  ["22:36:47", "Swap", "USDC → HYPE", "25,000", "$25,000.00", "$8.75", "0x1a7be0c45f29d3e8b61c0a2f4e7d9b3c5a8f1e0d2c4b6a8f0e2d4c6b8a0f2e4d", "Filled"],
-  ["22:31:05", "Limit Order", "BTC", "0.2500", "$21,776.25", "—", "0x4c8d1e2f3a5b7c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d", "Cancelled"],
-  ["22:28:54", "Close Short", "AAVE", "142.30", "$13,640.31", "$4.09", "0x7e2f9a0b1c3d5e7f9a1b3c5d7e9f1a3b5c7d9e1f3a5b7c9d1e3f5a7b9c1d3e5f", "Filled"],
-  ["22:20:19", "Increase Short", "ADA", "84,000", "$12,364.80", "$3.71", "0xb5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6", "Filled"],
-  ["22:14:02", "Swap", "HYPE → USDC", "500.00", "$16,991.50", "$5.94", "0x2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e", "Filled"],
-  ["22:09:41", "Reduce Long", "BIO", "1,820,000", "$27,594.84", "$8.28", "0xc0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1", "Filled"],
-  ["21:58:30", "Stop Order", "ARB", "48,500", "$5,438.73", "—", "0x8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b", "Open"],
-  ["21:47:16", "Open Short", "DOGE", "120,000", "$18,289.20", "$5.49", "0x3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a", "Filled"],
-  ["21:33:08", "Deposit", "USDC", "250,000", "$250,000.00", "—", "0xe4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5", "Confirmed"],
+  ["8m ago", "Receive", "$PUMP", "19,913,625.40", "$50,073.79", "—", "XV3gj6wKMhFhhK7TPGbs9bidwSSmQQEYv5doGnrs7PfSHaQH3TK2CWNC99EgNsyurWgrNSfqdsVU6vUna1Y9fif3", "Received"],
+  ["7m ago", "Swap", "$PUMP → SOL", "4,978,406.35", "$12,505.00", "$0.01", "bDbyc6TirJmeouY8XjUdMSdor7JKHCNsjHZenfBEPEcgaERK2VAVPUtqchUJo71Srzfyqyg3haM9rSmAVF679yqt", "Confirmed"],
+  ["5m ago", "Swap", "$PUMP → SOL", "4,967,831.20", "$12,530.00", "$0.01", "Jve34h3ugWuo1c49tHChhsZDaB5YVHMJ42zPwasbL2bVPrKis5tqwH7PiSXB7Mu6XgZDof11Lbz2WhBmqicywcwT", "Confirmed"],
+  ["4m ago", "Swap", "$PUMP → SOL", "4,986,019.13", "$12,507.00", "$0.01", "up5GXCWLcGci9LzRnWJDbxzPfBfGyLxKBEwaKVUwAtzMdGkTwGF3NNWNBSB46iUm3kn1jXmwBjod8W5LoiiWTUBk", "Confirmed"],
+  ["2m ago", "Swap", "$PUMP → SOL", "4,981,368.72", "$12,531.79", "$0.01", "jCh8w6zjAkcWktoD1mxzsdYop5sPeybjYfpqfBuhSqWdjcTVnpgkPX38mrDDLmuoV5d793rK1WhMCEoobHULToDm", "Confirmed"],
 ];
 const short = (h: string) => `${h.slice(0, 8)}…${h.slice(-6)}`;
 function TransactionsTable() {
-  const heads = ["Time", "Type", "Asset", "Size", "Value", "Fee", "Status", "Tx ID"];
+  const heads = ["Ago", "Type", "Asset", "Size", "Value", "Fee", "Status", "Tx ID"];
   return (
     <table className="mt-5 w-full text-[9px]">
       <thead><tr className="text-[8.5px] text-foreground/90">{heads.map((h, i) => <th key={h} className={`clk pb-3 font-normal hover:text-foreground ${i < 3 ? "text-left" : "text-right"} ${i === 0 ? "pl-2.5" : ""}`}>{h}</th>)}</tr></thead>
       <tbody>
         {txs.map((t) => {
-          const coin = t[2].includes("→") ? t[2].split(" → ")[1]! : t[2];
-          const tone = t[1].includes("Long") || t[1] === "Deposit" ? "text-gain" : t[1].includes("Short") ? "text-loss" : t[1] === "Swap" ? "text-brand" : "text-gold";
+          const tone = t[1].includes("Long") || t[1] === "Deposit" || t[1] === "Receive" ? "text-gain" : t[1].includes("Short") ? "text-loss" : t[1] === "Swap" ? "text-brand" : "text-gold";
           return (
             <tr key={t[6]} className="clk border-t border-line-soft hover:bg-chip">
-              <td className="py-[11px] pl-2.5 text-muted-foreground">{t[0]}<div className="text-[7px] text-dim">Nov 25</div></td>
+              <td className="py-[11px] pl-2.5 whitespace-nowrap text-muted-foreground">{t[0]}</td>
               <td><span className={`rounded px-1.5 py-[2px] text-[8px] ${tone} bg-chip-strong`}>{t[1]}</span></td>
-              <td><div className="flex items-center gap-2"><Coin s={coin} size={12} /><a href="#" className="font-medium hover:underline">{t[2]}</a></div></td>
+              <td><div className="flex items-center gap-2"><span className="flex items-center gap-0.5">{t[2].split(" → ").map((asset) => <Coin key={asset} s={asset} size={14} />)}</span><a href="#" className="font-medium hover:underline">{t[2]}</a></div></td>
               <td className="text-right">{t[3]}</td>
               <td className="text-right">{t[4]}</td>
               <td className="text-right text-muted-foreground">{t[5]}</td>
               <td className={`text-right ${t[7] === "Cancelled" ? "text-loss" : t[7] === "Open" ? "text-gold" : "text-gain"}`}>{t[7]}</td>
               <td className="text-right">
-                <a href={`https://app.hyperliquid.xyz/explorer/tx/${t[6]}`} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="clk inline-flex items-center gap-1 font-mono text-[8.5px] text-brand underline decoration-brand/40 underline-offset-2 hover:decoration-brand">{short(t[6])}{I.ext}</a>
+                <a href={`https://solscan.io/tx/${t[6]}`} target="_blank" rel="noopener noreferrer" aria-label={`Open Solana transaction ${t[6]}`} onClick={(e) => e.stopPropagation()} className="clk inline-flex items-center gap-1 font-mono text-[8.5px] text-brand underline decoration-brand/40 underline-offset-2 hover:decoration-brand">{short(t[6])}{I.ext}</a>
               </td>
             </tr>
           );
