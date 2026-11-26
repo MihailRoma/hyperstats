@@ -373,7 +373,7 @@ function Main() {
     <main className="min-w-0 px-6 py-5">
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-3">
-          <img src="/shane-profile.png" alt="Shane S." width={40} height={40} className="h-10 w-10 rounded-full border border-line object-cover" />
+          <img src="/shane-profile.png" alt="Shane S." width={44} height={44} className="h-11 w-11 rounded-full border border-line object-cover" />
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-[16px] font-medium tracking-[-0.01em]">Shane S.</h1>
