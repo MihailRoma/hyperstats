@@ -300,7 +300,7 @@ const txs: Tx[] = [
   { age: "1d ago", type: "Swap", asset: "LINK → USDC", via: "Uniswap · Ethereum", size: "350.00 LINK", value: "$5,201.00", fee: "$4.50", txid: "0xc38e1e3f78d7e0a78727ad190cb70ab7dae7fc17253426f44ea981f61929e362", status: "Confirmed", network: "ethereum" },
   { age: "19h ago", type: "Withdraw", asset: "USDT", via: "Optimism", size: "2,750.00 USDT", value: "$2,750.00", fee: "$0.08", txid: "0xf05bef9596dc28d0d166c2d3844a062b9a6d59b0c8acd3e8afb60f4cb493f0f9", status: "Completed", network: "optimism" },
   { age: "14h ago", type: "Close Long", asset: "BTC", via: "Hyperliquid", size: "0.125 BTC", value: "$10,840.00", fee: "$3.25", txid: "0x9440c1b47049c3d7a826d41066f82f8b386507fade08cda3a70ced7006929977", status: "Filled", network: "hyperliquid" },
-  { age: "12m ago", type: "Transfer", asset: "SOL", via: "Binance · Solana", size: "2.40394324 SOL", value: "$171.20", fee: "$0.0009267", txid: "5a299w6qmuXsPJ12oLgxCehHgaWr4iLGAo3m2A1k6dGRUFGVQQDXYHveoiM4A7ZToiK123fC3HzLnth5FFxqR4cC", status: "Confirmed", network: "solana" },
+  { age: "12m ago", type: "Transfer", asset: "SOL", via: "Binance Hot Wallet (8DfHu)", size: "2.40394324 SOL", value: "$171.20", fee: "$0.0009267", txid: "5a299w6qmuXsPJ12oLgxCehHgaWr4iLGAo3m2A1k6dGRUFGVQQDXYHveoiM4A7ZToiK123fC3HzLnth5FFxqR4cC", status: "Confirmed", network: "solana" },
   { age: "8m ago", type: "Receive", asset: "$PUMP", via: "Solana", size: "19,913,625.40", value: "$50,073.79", fee: "—", txid: "XV3gj6wKMhFhhK7TPGbs9bidwSSmQQEYv5doGnrs7PfSHaQH3TK2CWNC99EgNsyurWgrNSfqdsVU6vUna1Y9fif3", status: "Received", network: "solana" },
   { age: "7m ago", type: "Swap", asset: "$PUMP → $SOL", via: "Jupiter", size: "$4,997.43", value: "$4,997.81", fee: "$0.00157", txid: "bDbyc6TirJmeouY8XjUdMSdor7JKHCNsjHZenfBEPEcgaERK2VAVPUtqchUJo71Srzfyqyg3haM9rSmAVF679yqt", status: "Confirmed", network: "solana" },
   { age: "5m ago", type: "Swap", asset: "$PUMP → $SOL", via: "Jupiter", size: "$5,003.68", value: "$5,004.12", fee: "$0.00193", txid: "Jve34h3ugWuo1c49tHChhsZDaB5YVHMJ42zPwasbL2bVPrKis5tqwH7PiSXB7Mu6XgZDof11Lbz2WhBmqicywcwT", status: "Confirmed", network: "solana" },
@@ -315,6 +315,27 @@ const txExplorerUrls: Record<Tx["network"], string> = {
   optimism: "https://optimistic.etherscan.io/tx/",
   solana: "https://solscan.io/tx/",
 };
+const viaBrandLogos: Record<string, string[]> = {
+  "Binance Hot Wallet (8DfHu)": ["https://thesvg.org/icons/binance/default.svg"],
+  Hyperliquid: ["https://app.hyperliquid.xyz/coins/HYPE.svg"],
+  "Uniswap · Ethereum": ["https://app.uniswap.org/favicon.ico", "https://thesvg.org/icons/ethereum/default.svg"],
+  Base: ["https://thesvg.org/icons/base/default.svg"],
+  Arbitrum: ["https://thesvg.org/icons/arbitrum/default.svg"],
+  Optimism: ["https://thesvg.org/icons/optimism/default.svg"],
+  Solana: ["https://thesvg.org/icons/solana/default.svg"],
+  Jupiter: ["https://jup.ag/favicon.svg"],
+};
+function ViaBrand({ via }: { via: string }) {
+  const logos = viaBrandLogos[via] ?? [];
+  return (
+    <div className="flex items-center gap-1.5 text-muted-foreground">
+      {logos.map((logo) => (
+        <img key={logo} src={logo} alt="" aria-hidden="true" width={14} height={14} loading="lazy" decoding="async" className="size-3.5 shrink-0 object-contain" />
+      ))}
+      <span>{via}</span>
+    </div>
+  );
+}
 const short = (h: string) => `${h.slice(0, 8)}…${h.slice(-6)}`;
 const shortAddress = (address: string) => `${address.slice(0, 6)}…${address.slice(-4)}`;
 function TransactionsTable() {
@@ -331,10 +352,7 @@ function TransactionsTable() {
               <td className="py-[11px] pl-2.5 whitespace-nowrap text-muted-foreground">{t.age}</td>
               <td><span className={`rounded px-1.5 py-[2px] text-[9px] ${tone} bg-chip-strong`}>{t.type}</span></td>
               <td><div className="flex items-center gap-2"><span className="flex items-center gap-0.5">{t.asset.split(" → ").map((asset) => <Coin key={asset} s={asset} size={14} />)}</span><a href="#" className="font-medium hover:underline">{t.asset}</a></div></td>
-              <td className="whitespace-nowrap"><div className="flex items-center gap-1.5 text-muted-foreground">
-                {t.via === "Jupiter" ? <img src="https://jup.ag/favicon.svg" alt="Jupiter Exchange logo" width={14} height={14} loading="lazy" decoding="async" /> : t.via === "Solana" ? <Coin s="$SOL" size={14} /> : null}
-                <span>{t.via}</span>
-              </div></td>
+              <td className="whitespace-nowrap"><ViaBrand via={t.via} /></td>
               <td className="text-right whitespace-nowrap">{t.size}</td>
               <td className="text-right whitespace-nowrap">{t.value}</td>
               <td className="text-right text-muted-foreground">{t.fee}</td>
