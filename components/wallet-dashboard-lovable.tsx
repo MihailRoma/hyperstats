@@ -300,12 +300,10 @@ const txs: Tx[] = [
   { age: "1d ago", type: "Swap", asset: "LINK → USDC", via: "Uniswap · Ethereum", size: "350.00 LINK", value: "$5,201.00", fee: "$4.50", txid: "0xc38e1e3f78d7e0a78727ad190cb70ab7dae7fc17253426f44ea981f61929e362", status: "Confirmed", network: "ethereum" },
   { age: "19h ago", type: "Withdraw", asset: "USDT", via: "Optimism", size: "2,750.00 USDT", value: "$2,750.00", fee: "$0.08", txid: "0xf05bef9596dc28d0d166c2d3844a062b9a6d59b0c8acd3e8afb60f4cb493f0f9", status: "Completed", network: "optimism" },
   { age: "14h ago", type: "Close Long", asset: "BTC", via: "Hyperliquid", size: "0.125 BTC", value: "$10,840.00", fee: "$3.25", txid: "0x9440c1b47049c3d7a826d41066f82f8b386507fade08cda3a70ced7006929977", status: "Filled", network: "hyperliquid" },
-  { age: "1h 59m ago", type: "Transfer", asset: "SOL", via: "Binance Hot Wallet (8DfHu)", size: "2.4 SOL", value: "$171.20", fee: "$0.0009267", txid: "5a299w6qmuXsPJ12oLgxCehHgaWr4iLGAo3m2A1k6dGRUFGVQQDXYHveoiM4A7ZToiK123fC3HzLnth5FFxqR4cC", status: "Confirmed", network: "solana" },
-  { age: "8m ago", type: "Receive", asset: "$PUMP", via: "Solana", size: "19,913,625.40", value: "$50,073.79", fee: "—", txid: "XV3gj6wKMhFhhK7TPGbs9bidwSSmQQEYv5doGnrs7PfSHaQH3TK2CWNC99EgNsyurWgrNSfqdsVU6vUna1Y9fif3", status: "Received", network: "solana" },
-  { age: "7m ago", type: "Swap", asset: "$PUMP → $SOL", via: "Jupiter", size: "$4,997.43", value: "$4,997.81", fee: "$0.00157", txid: "bDbyc6TirJmeouY8XjUdMSdor7JKHCNsjHZenfBEPEcgaERK2VAVPUtqchUJo71Srzfyqyg3haM9rSmAVF679yqt", status: "Confirmed", network: "solana" },
-  { age: "5m ago", type: "Swap", asset: "$PUMP → $SOL", via: "Jupiter", size: "$5,003.68", value: "$5,004.12", fee: "$0.00193", txid: "Jve34h3ugWuo1c49tHChhsZDaB5YVHMJ42zPwasbL2bVPrKis5tqwH7PiSXB7Mu6XgZDof11Lbz2WhBmqicywcwT", status: "Confirmed", network: "solana" },
-  { age: "4m ago", type: "Swap", asset: "$PUMP → $SOL", via: "Jupiter", size: "$4,991.76", value: "$4,992.31", fee: "$0.00128", txid: "up5GXCWLcGci9LzRnWJDbxzPfBfGyLxKBEwaKVUwAtzMdGkTwGF3NNWNBSB46iUm3kn1jXmwBjod8W5LoiiWTUBk", status: "Confirmed", network: "solana" },
-  { age: "2m ago", type: "Swap", asset: "$PUMP → $SOL", via: "Jupiter", size: "$5,008.21", value: "$5,008.63", fee: "$0.00164", txid: "jCh8w6zjAkcWktoD1mxzsdYop5sPeybjYfpqfBuhSqWdjcTVnpgkPX38mrDDLmuoV5d793rK1WhMCEoobHULToDm", status: "Pending", network: "solana" },
+  { age: "2h 8m ago", type: "Transfer", asset: "SOL", via: "Binance Hot Wallet (8DfHu)", size: "2.4 SOL", value: "$171.20", fee: "$0.0009267", txid: "5a299w6qmuXsPJ12oLgxCehHgaWr4iLGAo3m2A1k6dGRUFGVQQDXYHveoiM4A7ZToiK123fC3HzLnth5FFxqR4cC", status: "Confirmed", network: "solana" },
+  { age: "1h 52m ago", type: "Fill Order", asset: "SOL", via: "Jupiter", size: "72.52 SOL", value: "$5,172.93", fee: "—", txid: "4NfNXSy9M9AKGE", status: "Confirmed", network: "solana" },
+  { age: "1h 51m ago", type: "Fill Order", asset: "SOL", via: "Jupiter", size: "72.54 SOL", value: "$5,174.35", fee: "—", txid: "5dgkDaF3TC9v1xA", status: "Confirmed", network: "solana" },
+  { age: "1h 49m ago", type: "Swap", asset: "SOL → USDC", via: "Jupiter", size: "72.68 SOL", value: "$5,184.33", fee: "—", txid: "4gXKFhZ7XN187M", status: "Confirmed", network: "solana" },
 ];
 const txExplorerUrls: Record<Tx["network"], string> = {
   hyperliquid: "https://app.hyperliquid.xyz/explorer/tx/",
