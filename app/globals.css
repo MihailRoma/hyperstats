@@ -50,6 +50,7 @@
   --light-foreground: #050813;
   font-family: var(--font-sans);
   font-synthesis: none;
+  font-variant-numeric: tabular-nums;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -70,3 +71,8 @@
 @keyframes ticker { from { transform: translateX(0) } to { transform: translateX(-50%) } }
 @utility animate-ticker { animation: ticker 60s linear infinite; }
 @utility clk { cursor: pointer; transition: background-color .15s, color .15s, opacity .15s, border-color .15s; }
+
+.wallet-dashboard { zoom: 1.15; }
+@media (max-width: 1700px) {
+  .wallet-dashboard { zoom: 1; }
+}

@@ -22,7 +22,7 @@ function Logo() {
   return (
     <a href="#" className="clk flex items-center gap-2">
       <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor"><rect x="0" y="4" width="3" height="12" rx="1"/><rect x="5.5" y="0" width="3" height="16" rx="1"/><rect x="11" y="6" width="3" height="6" rx="1"/></svg>
-      <span className="text-[17px] font-medium tracking-[-0.01em]">Hyperstats</span>
+      <span className="text-[22px] font-medium tracking-[-0.01em]">Hyperstats</span>
     </a>
   );
 }
@@ -34,17 +34,17 @@ function TopNav() {
       <Logo />
       <nav className="ml-[38px] flex items-center gap-1">
         {items.map((t) => (
-          <a key={t} href="#" className={`clk rounded-full px-[9px] py-[6px] text-[10.5px] ${t === "Favourites" ? "bg-brand text-foreground" : "text-foreground/90 hover:bg-chip-strong"}`}>{t}</a>
+          <a key={t} href="#" className={`clk rounded-full px-[9px] py-[6px] text-[11.5px] ${t === "Terminal" ? "bg-brand text-foreground" : "text-foreground/90 hover:bg-chip-strong"}`}>{t}</a>
         ))}
       </nav>
       <div className="ml-auto flex items-center gap-2">
-        <div className="clk flex h-[25px] w-[175px] items-center hover:border-foreground/20 gap-2 rounded-full border border-line bg-chip px-3 text-[9px] text-muted-foreground">
+        <div className="clk flex h-[25px] w-[175px] items-center hover:border-foreground/20 gap-2 rounded-full border border-line bg-chip px-3 text-[10px] text-muted-foreground">
           {I.search}<span className="flex-1 truncate">Search wallets, tokens, ranks...</span>
-          <span className="rounded border border-line px-1 text-[8px]">/</span>
+          <span className="rounded border border-line px-1 text-[9px]">/</span>
         </div>
         <span className="clk grid h-[25px] w-[25px] place-items-center rounded-full border border-line bg-chip hover:bg-chip-strong">{I.x}</span>
-        <span className="clk flex h-[25px] items-center gap-1.5 rounded-full border border-line bg-chip px-3 text-[9px] font-semibold hover:bg-chip-strong">{I.send}Bots</span>
-        <span className="clk flex h-[25px] items-center gap-1.5 rounded-full border border-brand/60 bg-brand/25 px-3 text-[9px] hover:bg-brand/40">{I.send}<b className="font-semibold">Copy</b> on Telegram <span className="ml-0.5">→</span></span>
+        <span className="clk flex h-[25px] items-center gap-1.5 rounded-full border border-line bg-chip px-3 text-[10px] font-semibold hover:bg-chip-strong">{I.send}Bots</span>
+        <span className="clk flex h-[25px] items-center gap-1.5 rounded-full border border-brand/60 bg-brand/25 px-3 text-[10px] hover:bg-brand/40">{I.send}<b className="font-semibold">Copy</b> on Telegram <span className="ml-0.5">→</span></span>
       </div>
     </header>
   );
@@ -79,11 +79,11 @@ function Ticker() {
     <div className="overflow-hidden border-y border-line-soft py-[7px]">
       <div className="flex w-max animate-ticker gap-[22px]">
         {row.map((t, i) => (
-          <a href="#" key={i} className="clk flex items-center gap-[7px] text-[9px] whitespace-nowrap hover:opacity-80">
+          <a href="#" key={i} className="clk flex items-center gap-[7px] text-[10px] whitespace-nowrap hover:opacity-80">
             <Coin s={t[0]} />
-            <span className="text-[10px] font-semibold">{t[0]}</span>
-            <span className={`rounded px-1.5 py-[1px] text-[7.5px] ${t[1] === "Long" ? "bg-gain/15 text-gain" : t[1] === "Short" ? "bg-loss/15 text-loss" : "bg-chip-strong text-muted-foreground"}`}>{t[1]}</span>
-            <span className="text-[8.5px] text-muted-foreground underline decoration-dotted underline-offset-2">{t[2]}</span>
+            <span className="text-[11px] font-semibold">{t[0]}</span>
+            <span className={`rounded px-1.5 py-[1px] text-[8.5px] ${t[1] === "Long" ? "bg-gain/15 text-gain" : t[1] === "Short" ? "bg-loss/15 text-loss" : "bg-chip-strong text-muted-foreground"}`}>{t[1]}</span>
+            <span className="text-[9.5px] text-muted-foreground underline decoration-dotted underline-offset-2">{t[2]}</span>
             <span className={`font-semibold ${t[3].startsWith("−") ? "text-loss" : t[3].startsWith("+") ? "text-gain" : ""}`}>{t[3]}</span>
             <span className="text-dim">{t[4]}</span>
           </a>
@@ -97,56 +97,56 @@ function Ticker() {
 function Section({ title, right, children }: { title: string; right?: ReactNode; children: ReactNode }) {
   return (
     <div className="border-b border-line-soft px-4 py-[14px]">
-      <div className="mb-[13px] flex justify-between text-[9.5px] font-semibold">{title}{right}</div>
+      <div className="mb-[13px] flex justify-between text-[10.5px] font-semibold">{title}{right}</div>
       {children}
     </div>
   );
 }
 const Row = ({ l, r, c = "" }: { l: ReactNode; r: ReactNode; c?: string }) => (
-  <div className="flex items-center justify-between py-[6px] text-[9px]"><span className="text-muted-foreground">{l}</span><span className={`font-medium ${c}`}>{r}</span></div>
+  <div className="flex items-center justify-between py-[6px] text-[10px]"><span className="text-muted-foreground">{l}</span><span className={`font-medium ${c}`}>{r}</span></div>
 );
 const Box = ({ l, v, c = "" }: { l: string; v: string; c?: string }) => (
-  <div className="rounded-md border border-line bg-chip px-2 py-2 text-[8.5px]"><div className="text-muted-foreground">{l}</div><div className={`mt-1 text-[9px] font-medium ${c}`}>{v}</div></div>
+  <div className="rounded-md border border-line bg-chip px-2 py-2 text-[9.5px]"><div className="text-muted-foreground">{l}</div><div className={`mt-1 text-[10px] font-medium ${c}`}>{v}</div></div>
 );
 const BarRow = ({ l, d, v, c }: { l: string; d: string; v: string; c: string }) => (
-  <div className="flex items-center justify-between py-[5px] text-[9px]"><span>{l} <span className="ml-1 text-[7px] text-dim">{d}</span></span><span className={c}>{v}</span></div>
+  <div className="flex items-center justify-between py-[5px] text-[10px]"><span>{l} <span className="ml-1 text-[8px] text-dim">{d}</span></span><span className={c}>{v}</span></div>
 );
 
 function LeftSidebar() {
   return (
     <aside className="border-r border-line-soft">
       <div className="border-b border-line-soft px-4 py-[16px]">
-        <div className="text-[11.5px] font-semibold">Wallet Stats</div>
-        <div className="mt-0.5 text-[8px] text-muted-foreground">30-day and lifetime activity</div>
+        <div className="text-[12.5px] font-semibold">Wallet Stats</div>
+        <div className="mt-0.5 text-[9px] text-muted-foreground">30-day and lifetime activity</div>
       </div>
       <div className="border-b border-line-soft px-4 py-[14px]">
-        <div className="flex justify-between text-[9.5px] font-semibold"><span>Account structure</span><span>$1.84M</span></div>
-        <div className="mt-2 h-[3px] rounded-full bg-chip-strong"><div className="h-full w-[34%] rounded-full bg-gain" /></div>
-        <div className="mt-2 flex gap-3 text-[7.5px] text-muted-foreground"><span><span className="text-gain">●</span> Spot <b className="text-foreground">34%</b></span><span>● Position <b className="text-foreground">66%</b></span></div>
+        <div className="flex justify-between text-[10.5px] font-semibold"><span>Account structure</span><span>$3.68M</span></div>
+        <div className="mt-2 h-1 rounded-full bg-chip-strong"><div className="h-full w-[34%] rounded-full bg-gain" /></div>
+        <div className="mt-2 flex gap-3 text-[8.5px] text-muted-foreground"><span><span className="text-gain">●</span> Spot <b className="text-foreground">34%</b></span><span>● Position <b className="text-foreground">66%</b></span></div>
         <div className="mt-3">
-          <Row l="Spot Value" r="$620.4K" />
-          <Row l="Position Value" r="$1.22M" />
-          <Row l="Positions P&L" r="−$34.3K" c="text-loss" />
+          <Row l="Spot Value" r="$1.24M" />
+          <Row l="Position Value" r="$2.44M" />
+          <Row l="Positions P&L" r="−$68.6K" c="text-loss" />
         </div>
       </div>
       <Section title="Consistency" right={<span className="text-gain">53%</span>}>
-        <div className="flex justify-between text-[8.5px] text-muted-foreground"><span>16 of 30 profitable days</span><span>hit rate</span></div>
+        <div className="flex justify-between text-[9.5px] text-muted-foreground"><span>16 of 30 profitable days</span><span>hit rate</span></div>
         <div className="mt-[18px] h-[3px] rounded-full bg-chip-strong"><div className="h-full w-[53%] rounded-full bg-gain" /></div>
       </Section>
       <Section title="Trade tempo">
-        <div className="grid grid-cols-2 gap-2"><Box l="Avg Daily P&L" v="+$1.09K" c="text-gain" /><Box l="Avg Position" v="$152.6K" /></div>
+        <div className="grid grid-cols-2 gap-2"><Box l="Avg Daily P&L" v="+$10.77K" c="text-gain" /><Box l="Avg Position" v="$305.2K" /></div>
         <div className="mt-2"><Box l="Closed trades" v="21W / 18L" /></div>
       </Section>
       <Section title="Best & worst day">
-        <div className="border-l-2 border-chip-strong pl-2"><BarRow l="Best" d="Nov 14" v="+$18.4K" c="text-gain" /><BarRow l="Worst" d="Nov 7" v="−$12.1K" c="text-loss" /></div>
+        <div className="border-l-2 border-chip-strong pl-2"><BarRow l="Best" d="Nov 14" v="+$36.8K" c="text-gain" /><BarRow l="Worst" d="Nov 7" v="−$24.2K" c="text-loss" /></div>
       </Section>
       <Section title="Largest trades">
-        <div className="border-l-2 border-chip-strong pl-2"><BarRow l="Largest Win" d="BTC" v="+$12.8K" c="text-gain" /><BarRow l="Largest Loss" d="ARB" v="−$8.3K" c="text-loss" /></div>
+        <div className="border-l-2 border-chip-strong pl-2"><BarRow l="Largest Win" d="BTC" v="+$25.6K" c="text-gain" /><BarRow l="Largest Loss" d="ARB" v="−$16.6K" c="text-loss" /></div>
       </Section>
       <Section title="Execution"><Row l="Execution Pace" r="6.2 trades / day" /><Row l="Active Exit Days · 30D" r="21 days" /></Section>
       <Section title="Funds"><Row l="Net Deposits" r="+$248.6K" c="text-gain" /><Row l="Transactions" r="3,046" /></Section>
       <Section title="Risk-adjusted">
-        <div className="grid grid-cols-2 gap-2"><Box l="Sortino" v="1.58" /><Box l="Profit Factor" v="1.22" /><Box l="Max Drawdown" v="−18.4%" c="text-loss" /><Box l="Gross P&L" v="+$82.6K" c="text-gain" /></div>
+        <div className="grid grid-cols-2 gap-2"><Box l="Sortino" v="1.58" /><Box l="Profit Factor" v="1.22" /><Box l="Max Drawdown" v="−18.4%" c="text-loss" /><Box l="Gross P&L" v="+$482.6K" c="text-gain" /></div>
       </Section>
     </aside>
   );
@@ -159,27 +159,28 @@ function seeded(n: number) {
   const noise: number[] = [0];
   let value = 0;
   for (let i = 1; i < n; i++) {
-    value += (r() - 0.5) * 1800;
+    value += (r() - 0.5) * 18000;
     noise.push(value);
   }
   const first = noise[0] ?? 0;
   const last = noise[noise.length - 1] ?? first;
   return noise.map((point, i) => {
-    const progress = i / (n - 1);
+    const progress = i / Math.max(1, n - 1);
     const centeredNoise = point - first - (last - first) * progress;
-    return progress * 32600 + centeredNoise * 0.7;
+    return progress * 323100 + centeredNoise * 0.7;
   });
 }
 function PnlChart() {
-  const W = 1380, H = 200, X0 = 40, Y = (v: number) => 100 - v / 600;
+  const W = 1380, H = 220, X0 = 56, Y = (v: number) => 205 - ((v + 100000) / 500000) * 187;
   const data = seeded(180);
   const xs = (i: number) => X0 + (i / (data.length - 1)) * (W - X0 - 30);
   const line = data.map((v, i) => `${i ? "L" : "M"}${xs(i).toFixed(1)},${Y(v).toFixed(1)}`).join("");
   const zeroY = Y(0);
   const area = `${line}L${xs(data.length - 1)},${zeroY}L${X0},${zeroY}Z`;
+  const gridValues = [400000, 300000, 200000, 100000, 0, -100000];
   const markers: [number, string][] = [[0.06, "18"], [0.14, "27"], [0.24, "12"], [0.35, "34"], [0.46, "19"], [0.58, "28"], [0.71, "16"], [0.82, "31"], [0.94, "22"]];
   return (
-    <div className="relative h-[250px]">
+    <div role="img" aria-label="30-day cumulative P&L chart ending at positive 323,100 dollars" className="relative h-[270px]">
       <svg viewBox={`0 0 ${W} 250`} preserveAspectRatio="none" className="h-full w-full">
         <defs>
           <linearGradient id="lossG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="var(--loss)" stopOpacity=".35"/><stop offset="1" stopColor="var(--loss)" stopOpacity="0"/></linearGradient>
@@ -187,24 +188,24 @@ function PnlChart() {
           <clipPath id="above"><rect x="0" y="0" width={W} height={zeroY} /></clipPath>
           <clipPath id="below"><rect x="0" y={zeroY} width={W} height={H} /></clipPath>
         </defs>
-        {markers.map(([p], i) => <line key={i} x1={X0 + p * (W - X0 - 30)} x2={X0 + p * (W - X0 - 30)} y1="15" y2={H} stroke="#ffffff22" strokeWidth="1" />)}
-        <line x1={X0} x2={W - 30} y1={zeroY} y2={zeroY} stroke="#ffffff30" strokeDasharray="3 3" />
+        {gridValues.map((value) => <line key={value} x1={X0} x2={W - 30} y1={Y(value)} y2={Y(value)} stroke={value === 0 ? "#ffffff35" : "#ffffff14"} strokeDasharray={value === 0 ? "4 4" : "2 7"} />)}
+        {markers.map(([p], i) => <line key={i} x1={X0 + p * (W - X0 - 30)} x2={X0 + p * (W - X0 - 30)} y1="16" y2="205" stroke="#ffffff22" strokeWidth="1" />)}
         <g>
           <path d={area} fill="url(#lossG)" clipPath="url(#below)" />
           <path d={area} fill="url(#gainG)" clipPath="url(#above)" />
-          <path d={line} fill="none" stroke="var(--loss)" strokeWidth="1.3" clipPath="url(#below)" />
-          <path d={line} fill="none" stroke="var(--gain)" strokeWidth="1.3" clipPath="url(#above)" />
+          <path d={line} fill="none" stroke="var(--loss)" strokeWidth="1.5" clipPath="url(#below)" />
+          <path d={line} fill="none" stroke="var(--gain)" strokeWidth="1.5" clipPath="url(#above)" />
         </g>
       </svg>
       {markers.map(([p, label], i) => (
-        <span key={i} style={{ left: `${((X0 + p * (W - X0 - 30)) / W) * 100}%` }} className="absolute top-[6px] -translate-x-1/2 rounded-full bg-chip-strong px-1.5 text-[7px] font-semibold text-foreground">{label}</span>
+        <span key={i} style={{ left: `${((X0 + p * (W - X0 - 30)) / W) * 100}%` }} className="absolute top-[6px] -translate-x-1/2 rounded-full bg-chip-strong px-1.5 text-[8px] font-semibold text-foreground">{label}</span>
       ))}
-      <div className="pointer-events-none absolute inset-y-0 left-0 flex flex-col justify-between pb-[60px] pt-[30px] text-[8px] text-dim">
-        {["$60K", "$30K", "$0", "−$30K", "−$60K"].map((t) => <span key={t}>{t}</span>)}
+      <div className="pointer-events-none absolute inset-0 left-0 text-[9px] text-dim">
+        {gridValues.map((value) => <span key={value} style={{ top: `${(Y(value) / 250) * 100}%` }} className="absolute left-0 -translate-y-1/2">{value > 0 ? `$${value / 1000}K` : value === 0 ? "$0" : "−$100K"}</span>)}
       </div>
-      <span className="absolute right-[1.6%] top-[34px] rounded-full bg-gain px-1.5 text-[7px] font-semibold text-light-foreground">+$32.6K</span>
-      <span className="absolute bottom-[40px] left-[45px] grid h-[22px] w-[22px] place-items-center rounded-full bg-light text-[10px] text-light-foreground">⇆</span>
-      <div className="absolute inset-x-[40px] bottom-0 flex justify-between text-[8px] text-muted-foreground">
+      <span className="absolute right-[1.6%] top-[16%] rounded-full bg-gain px-2 py-0.5 text-[9px] font-semibold text-light-foreground">+$323.1K</span>
+      <span className="absolute bottom-[40px] left-[58px] grid h-[22px] w-[22px] place-items-center rounded-full bg-light text-[11px] text-light-foreground">⇆</span>
+      <div className="absolute inset-x-[56px] bottom-0 flex justify-between text-[9px] text-muted-foreground">
         {["Oct 28", "Nov 2", "Nov 7", "Nov 12", "Nov 17", "Nov 22", "Nov 26"].map((date) => (
           <span key={date} className="text-center leading-tight">{date}</span>
         ))}
@@ -215,10 +216,10 @@ function PnlChart() {
 
 /* ---------- main ---------- */
 const Btn = ({ children }: { children: ReactNode }) => (
-  <span className="clk flex h-[21px] items-center gap-1.5 rounded-full border border-line bg-chip px-2.5 text-[8.5px] hover:bg-chip-strong">{children}</span>
+  <span className="clk flex h-[21px] items-center gap-1.5 rounded-full border border-line bg-chip px-2.5 text-[9.5px] hover:bg-chip-strong">{children}</span>
 );
 const Stat = ({ l, v, c = "" }: { l: string; v: string; c?: string }) => (
-  <span className="flex h-[22px] items-center gap-1.5 rounded-full border border-line bg-chip px-2.5 text-[8.5px]"><span className="text-muted-foreground">{l}</span><b className={`font-semibold ${c}`}>{v}</b></span>
+  <span className="flex h-[22px] items-center gap-1.5 rounded-full border border-line bg-chip px-2.5 text-[9.5px]"><span className="text-muted-foreground">{l}</span><b className={`font-semibold ${c}`}>{v}</b></span>
 );
 function Seg({ items, active, badges, onPick }: { items: string[]; active: string; badges?: Record<string, string>; onPick?: (t: string) => void }) {
   const [local, setLocal] = useState(active);
@@ -226,8 +227,8 @@ function Seg({ items, active, badges, onPick }: { items: string[]; active: strin
   return (
     <div className="flex items-center rounded-full border border-line bg-chip p-[3px]">
       {items.map((t) => (
-        <button type="button" key={t} onClick={() => (onPick ? onPick(t) : setLocal(t))} className={`clk flex items-center gap-1.5 rounded-full px-[11px] py-[5px] text-[9.5px] ${t === cur ? "bg-light font-medium text-light-foreground" : "text-muted-foreground hover:text-foreground"}`}>
-          {t}{badges?.[t] && <span className={`rounded-full px-1 text-[7px] ${t === cur ? "bg-light-foreground/10" : "bg-chip-strong"}`}>{badges[t]}</span>}
+        <button type="button" key={t} onClick={() => (onPick ? onPick(t) : setLocal(t))} className={`clk flex items-center gap-1.5 rounded-full px-[11px] py-[5px] text-[10.5px] ${t === cur ? "bg-light font-medium text-light-foreground" : "text-muted-foreground hover:text-foreground"}`}>
+          {t}{badges?.[t] && <span className={`rounded-full px-1 text-[8px] ${t === cur ? "bg-light-foreground/10" : "bg-chip-strong"}`}>{badges[t]}</span>}
         </button>
       ))}
     </div>
@@ -236,22 +237,22 @@ function Seg({ items, active, badges, onPick }: { items: string[]; active: strin
 
 type Pos = [string, string, "Long" | "Short", string, string, string, string, string, string, string, string, string];
 const positions: Pos[] = [
-  ["0G", "Held 18d", "Long", "$91.4K", "$30.5K", "$0.232170", "$0.206900", "▾ 10.89%", "—", "3x", "−$9.9K", "−32.5%"],
-  ["AAVE", "Held 6d", "Short", "$84.7K", "$8.5K", "$93.2518", "$95.8330", "▴ 2.77%", "$102.40", "10x", "−$2.3K", "−27.7%"],
-  ["ADA", "Held 9d", "Short", "$112.0K", "$11.2K", "$0.142569", "$0.147200", "▴ 3.25%", "$0.1574", "10x", "−$3.6K", "−32.5%"],
-  ["ARB", "Held 5h", "Short", "$47.6K", "$4.76K", "$0.106030", "$0.112180", "▴ 5.80%", "$0.1168", "10x", "−$2.8K", "−58.0%"],
-  ["BERA", "Held 12d", "Long", "$18.2K", "$3.64K", "$0.221340", "$0.208050", "▾ 6.00%", "$0.1790", "5x", "−$1.1K", "−30.4%"],
-  ["BIO", "Held 16d", "Long", "$52.3K", "$17.4K", "$0.027133", "$0.025162", "▾ 7.26%", "$0.0181", "3x", "−$3.8K", "−21.8%"],
-  ["BTC", "Held 2d", "Short", "$603.4K", "$60.3K", "$86,412.0", "$87,105.0", "▴ 0.80%", "$95,053", "10x", "−$4.8K", "−7.9%"],
-  ["DOGE", "Held 12d", "Short", "$211.2K", "$21.1K", "$0.148200", "$0.152410", "▴ 2.84%", "$0.1622", "10x", "−$6.0K", "−28.4%"],
+  ["0G", "Held 18d", "Long", "$182.8K", "$61.0K", "$0.232170", "$0.206900", "▾ 10.89%", "—", "3x", "−$19.8K", "−32.5%"],
+  ["AAVE", "Held 6d", "Short", "$169.4K", "$17.0K", "$93.2518", "$95.8330", "▴ 2.77%", "$102.40", "10x", "−$4.6K", "−27.7%"],
+  ["ADA", "Held 9d", "Short", "$224.0K", "$22.4K", "$0.142569", "$0.147200", "▴ 3.25%", "$0.1574", "10x", "−$7.2K", "−32.5%"],
+  ["ARB", "Held 5h", "Short", "$95.2K", "$9.52K", "$0.106030", "$0.112180", "▴ 5.80%", "$0.1168", "10x", "−$5.6K", "−58.0%"],
+  ["BERA", "Held 12d", "Long", "$36.4K", "$7.28K", "$0.221340", "$0.208050", "▾ 6.00%", "$0.1790", "5x", "−$2.2K", "−30.4%"],
+  ["BIO", "Held 16d", "Long", "$104.6K", "$34.8K", "$0.027133", "$0.025162", "▾ 7.26%", "$0.0181", "3x", "−$7.6K", "−21.8%"],
+  ["BTC", "Held 2d", "Short", "$1.2068M", "$120.6K", "$86,412.0", "$87,105.0", "▴ 0.80%", "$95,053", "10x", "−$9.6K", "−7.9%"],
+  ["DOGE", "Held 12d", "Short", "$422.4K", "$42.2K", "$0.148200", "$0.152410", "▴ 2.84%", "$0.1622", "10x", "−$12.0K", "−28.4%"],
 ];
 
 function PositionsTable() {
   const heads = ["Asset", "Side", "Notional", "Margin", "Entry", "Mark", "Liq.", "Lev.", "P&L"];
   return (
-    <table className="mt-5 w-full text-[9px]">
+    <table className="mt-5 w-full text-[10px]">
       <thead>
-        <tr className="text-[8.5px] text-foreground/90">
+        <tr className="text-[9.5px] text-foreground/90">
           {heads.map((h, i) => (
             <th key={h} className={`clk pb-3 font-normal hover:text-foreground ${i < 2 ? "text-left" : "text-right"} ${i === 0 ? "pl-2.5" : ""}`}>{h}{h !== "Side" && <span className="ml-0.5 text-dim">{h === "P&L" ? "↓" : "⇅"}</span>}</th>
           ))}
@@ -261,15 +262,15 @@ function PositionsTable() {
       <tbody>
         {positions.map((p) => (
           <tr key={p[0]} className="clk border-t border-line-soft hover:bg-chip">
-            <td className="py-[11px] pl-2.5"><div className="flex items-center gap-2.5"><Coin s={p[0]} size={11} /><div><a href="#" className="font-medium hover:underline">{p[0]}</a><div className="text-[7.5px] text-muted-foreground">{p[1]}</div></div></div></td>
-            <td><span className={`flex items-center gap-2 ${p[2] === "Long" ? "text-gain" : "text-loss"}`}><span className={`grid h-[15px] w-[15px] place-items-center rounded text-[8px] ${p[2] === "Long" ? "bg-gain/15" : "bg-loss/15"}`}>{p[2] === "Long" ? "↑" : "↓"}</span><span className="text-[8px]">{p[2]}</span></span></td>
+            <td className="py-[11px] pl-2.5"><div className="flex items-center gap-2.5"><Coin s={p[0]} size={11} /><div><a href="#" className="font-medium hover:underline">{p[0]}</a><div className="text-[8.5px] text-muted-foreground">{p[1]}</div></div></div></td>
+            <td><span className={`flex items-center gap-2 ${p[2] === "Long" ? "text-gain" : "text-loss"}`}><span className={`grid h-[15px] w-[15px] place-items-center rounded text-[9px] ${p[2] === "Long" ? "bg-gain/15" : "bg-loss/15"}`}>{p[2] === "Long" ? "↑" : "↓"}</span><span className="text-[9px]">{p[2]}</span></span></td>
             <td className="text-right text-muted-foreground">{p[3]}</td>
             <td className="text-right">{p[4]}</td>
             <td className="text-right">{p[5]}</td>
-            <td className="text-right"><div className="text-loss">{p[6]}</div><div className="text-[7px] text-loss/80">{p[7]}</div></td>
+            <td className="text-right"><div className="text-loss">{p[6]}</div><div className="text-[8px] text-loss/80">{p[7]}</div></td>
             <td className="text-right">{p[8]}</td>
             <td className="text-right text-gold">{p[9]}</td>
-            <td className="text-right"><div className="text-loss">{p[10]}</div><div className="text-[7.5px] text-loss/80">{p[11]}</div></td>
+            <td className="text-right"><div className="text-loss">{p[10]}</div><div className="text-[8.5px] text-loss/80">{p[11]}</div></td>
             <td className="w-6 text-right text-muted-foreground">›</td>
           </tr>
         ))}
@@ -318,8 +319,8 @@ const shortAddress = (address: string) => `${address.slice(0, 6)}…${address.sl
 function TransactionsTable() {
   const heads = ["Ago", "Type", "Asset", "Via", "Size", "Value", "Fee", "Status", "Tx ID"];
   return (
-    <table className="mt-5 w-full text-[9px]">
-      <thead><tr className="text-[8.5px] text-foreground/90">{heads.map((h, i) => <th key={h} className={`clk pb-3 font-normal hover:text-foreground ${i < 4 ? "text-left" : "text-right"} ${i === 0 ? "pl-2.5" : ""}`}>{h}</th>)}</tr></thead>
+    <table className="mt-5 w-full text-[10px]">
+      <thead><tr className="text-[9.5px] text-foreground/90">{heads.map((h, i) => <th key={h} className={`clk pb-3 font-normal hover:text-foreground ${i < 4 ? "text-left" : "text-right"} ${i === 0 ? "pl-2.5" : ""}`}>{h}</th>)}</tr></thead>
       <tbody>
         {[...txs].reverse().map((t) => {
           const tone = t.type.includes("Long") || t.type === "Deposit" || t.type === "Receive" ? "text-gain" : t.type.includes("Short") ? "text-loss" : t.type === "Swap" ? "text-brand" : "text-gold";
@@ -327,7 +328,7 @@ function TransactionsTable() {
           return (
             <tr key={t.txid} className="clk border-t border-line-soft hover:bg-chip">
               <td className="py-[11px] pl-2.5 whitespace-nowrap text-muted-foreground">{t.age}</td>
-              <td><span className={`rounded px-1.5 py-[2px] text-[8px] ${tone} bg-chip-strong`}>{t.type}</span></td>
+              <td><span className={`rounded px-1.5 py-[2px] text-[9px] ${tone} bg-chip-strong`}>{t.type}</span></td>
               <td><div className="flex items-center gap-2"><span className="flex items-center gap-0.5">{t.asset.split(" → ").map((asset) => <Coin key={asset} s={asset} size={14} />)}</span><a href="#" className="font-medium hover:underline">{t.asset}</a></div></td>
               <td className="whitespace-nowrap"><div className="flex items-center gap-1.5 text-muted-foreground">
                 {t.via === "Jupiter" ? <img src="https://jup.ag/favicon.svg" alt="Jupiter Exchange logo" width={14} height={14} loading="lazy" decoding="async" /> : t.via === "Solana" ? <Coin s="$SOL" size={14} /> : null}
@@ -338,7 +339,7 @@ function TransactionsTable() {
               <td className="text-right text-muted-foreground">{t.fee}</td>
               <td className={`text-right ${statusTone}`}>{t.status}</td>
               <td className="text-right">
-                <a href={`${txExplorerUrls[t.network]}${t.txid}`} target="_blank" rel="noopener noreferrer" aria-label={`Open ${t.network} transaction ${t.txid}`} onClick={(e) => e.stopPropagation()} className="clk inline-flex items-center gap-1 font-mono text-[8.5px] text-brand underline decoration-brand/40 underline-offset-2 hover:decoration-brand">{short(t.txid)}{I.ext}</a>
+                <a href={`${txExplorerUrls[t.network]}${t.txid}`} target="_blank" rel="noopener noreferrer" aria-label={`Open ${t.network} transaction ${t.txid}`} onClick={(e) => e.stopPropagation()} className="clk inline-flex items-center gap-1 font-mono text-[9.5px] text-brand underline decoration-brand/40 underline-offset-2 hover:decoration-brand">{short(t.txid)}{I.ext}</a>
               </td>
             </tr>
           );
@@ -348,10 +349,10 @@ function TransactionsTable() {
   );
 }
 function SpotTable() {
-  const rows = [["USDC", "578,052.85", "$578.05K", "$1.0000"], ["HYPE", "1,245.87", "$42.36K", "$34.00"]];
+  const rows = [["USDC", "1,156,105.70", "$1.1561M", "$1.0000"], ["HYPE", "2,491.74", "$84.72K", "$34.00"]];
   return (
-    <table className="mt-5 w-full text-[9px]">
-      <thead><tr className="text-[8.5px] text-foreground/90">{["Asset", "Balance", "Value", "Price"].map((h, i) => <th key={h} className={`pb-3 font-normal ${i ? "text-right" : "pl-2.5 text-left"}`}>{h}</th>)}</tr></thead>
+    <table className="mt-5 w-full text-[10px]">
+      <thead><tr className="text-[9.5px] text-foreground/90">{["Asset", "Balance", "Value", "Price"].map((h, i) => <th key={h} className={`pb-3 font-normal ${i ? "text-right" : "pl-2.5 text-left"}`}>{h}</th>)}</tr></thead>
       <tbody>{rows.map((r) => <tr key={r[0]} className="clk border-t border-line-soft hover:bg-chip"><td className="py-[11px] pl-2.5"><div className="flex items-center gap-2.5"><Coin s={r[0]!} size={12} /><a href="#" className="font-medium hover:underline">{r[0]}</a></div></td><td className="text-right">{r[1]}</td><td className="text-right">{r[2]}</td><td className="text-right text-muted-foreground">{r[3]}</td></tr>)}</tbody>
     </table>
   );
@@ -360,70 +361,71 @@ function BottomTabs() {
   const [tab, setTab] = useState("Positions");
   return (
     <>
-      <div className="inline-flex"><Seg items={["Positions", "Spot", "Transactions", "Orders", "History", "Entries"]} active={tab} onPick={setTab} badges={{ Positions: "48", Spot: "2", Transactions: "3,046", Orders: "0" }} /></div>
-      <div className="mt-[12px] flex gap-[7px]"><Stat l="Total Value" v="$1.84M" /><Stat l="Total Margin" v="$157.4K" /><Stat l="Open P&L" v="−$34.3K" c="text-loss" /></div>
-      {tab === "Transactions" ? <TransactionsTable /> : tab === "Spot" ? <SpotTable /> : tab === "Positions" ? <PositionsTable /> : <div className="py-16 text-center text-[9px] text-muted-foreground">No {tab.toLowerCase()} to show</div>}
+      <div className="inline-flex"><Seg items={["Positions", "Spot", "Transactions", "Orders", "History", "Entries"]} active={tab} onPick={setTab} badges={{ Positions: "8", Spot: "2", Transactions: "3,046", Orders: "0" }} /></div>
+      <div className="mt-[12px] flex flex-wrap gap-2"><Stat l="Total Value" v="$3.68M" /><Stat l="Total Margin" v="$314.8K" /><Stat l="Open P&L" v="−$68.6K" c="text-loss" /></div>
+      {tab === "Transactions" ? <TransactionsTable /> : tab === "Spot" ? <SpotTable /> : tab === "Positions" ? <PositionsTable /> : <div className="py-16 text-center text-[10px] text-muted-foreground">No {tab.toLowerCase()} to show</div>}
     </>
   );
 }
 
 function Main() {
   return (
-    <main className="min-w-0 px-4 py-[16px]">
+    <main className="min-w-0 px-6 py-5">
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-3">
           <img src="/shane-profile.png" alt="Shane S." width={40} height={40} className="h-10 w-10 rounded-full border border-line object-cover" />
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-[16px] font-medium tracking-[-0.01em]">Shane S.</h1>
-              <span className="rounded bg-chip-strong px-1.5 py-1 text-[7.5px] text-muted-foreground">Hyperliquid</span>
+              <span className="rounded bg-chip-strong px-1.5 py-1 text-[8.5px] text-muted-foreground">Hyperliquid</span>
             </div>
             <div className="mt-1 flex items-center gap-2">
-              <a href={`https://app.hyperliquid.xyz/explorer/address/${ADDR}`} target="_blank" rel="noreferrer" className="clk text-[11px] text-muted-foreground hover:text-foreground hover:underline">{shortAddress(ADDR)}</a>
+              <a href={`https://app.hyperliquid.xyz/explorer/address/${ADDR}`} target="_blank" rel="noreferrer" className="clk text-[12px] text-muted-foreground hover:text-foreground hover:underline">{shortAddress(ADDR)}</a>
               <Btn>{I.copy}Copy</Btn><Btn>{I.ext}Open</Btn><Btn>{I.star}Save</Btn>
             </div>
           </div>
         </div>
         <div className="flex items-center gap-2">
           <span className="clk grid h-[25px] w-[25px] place-items-center rounded-full border border-line bg-chip hover:bg-chip-strong">{I.refresh}</span>
-          <span className="clk flex h-[25px] items-center gap-2 rounded-full border border-line bg-chip px-3 text-[9px] hover:bg-chip-strong">Hide favourites {I.chev}</span>
+          <span className="clk flex h-[25px] items-center gap-2 rounded-full border border-line bg-chip px-3 text-[10px] hover:bg-chip-strong">Hide favourites {I.chev}</span>
         </div>
       </div>
-      <div className="mt-2 flex items-center gap-3 text-[8.5px]">
+      <div className="mt-2 flex items-center gap-3 text-[9.5px]">
         <span className="rounded bg-chip-strong px-1.5 py-1">Grade B</span>
+        <span aria-label="Demo snapshot; values are illustrative and not live" className="rounded border border-brand/30 bg-brand/10 px-2 py-1 text-[8px] font-semibold uppercase tracking-wide text-brand">Demo snapshot</span>
         <span className="text-muted-foreground">Rank <b className="font-medium text-foreground">#4,281</b></span>
         <span className="text-muted-foreground"><span className="text-gain">●</span> 30D window <b className="font-medium text-foreground">Oct 28 – Nov 26</b></span>
       </div>
-      <div className="mt-[10px] flex gap-[7px]">
-        <Stat l="Account" v="$1.84M" /><Stat l="30D Realized" v="+$66.9K" c="text-gain" /><Stat l="Win Rate" v="53.8%" />
+      <div className="mt-3 flex flex-wrap gap-2">
+        <Stat l="Account" v="$3.68M" /><Stat l="30D Realized" v="+$391.7K" c="text-gain" /><Stat l="Win Rate" v="53.8%" />
         <Stat l="Sharpe" v="1.34" c="text-gain" /><Stat l="Bias" v="Long 58%" c="text-gain" />
       </div>
-      <div className="mt-[12px] flex items-center">
+      <div className="mt-3 flex w-full flex-wrap items-center justify-between gap-3">
         <Seg items={["Period PnL", "Total PnL", "Realized PnL"]} active="Period PnL" />
-        <div className="ml-[430px]"><Seg items={["15m", "1H", "24H", "7D", "30D", "3M", "1Y"]} active="30D" /></div>
+        <Seg items={["15m", "1H", "24H", "7D", "30D", "3M", "1Y"]} active="30D" />
         <div className="ml-auto flex items-center gap-1 rounded-full border border-line bg-chip p-[3px] text-muted-foreground">
           <span className="grid h-[19px] w-[19px] place-items-center rounded-full bg-light text-light-foreground">★</span>
-          <span className="px-1 text-[9px]">···</span>
+          <span className="px-1 text-[10px]">···</span>
           <span className="px-1">{I.eyeOff}</span>
         </div>
       </div>
-      <div className="mt-4 flex">
-        <div className="w-[488px]">
-          <div className="text-[8px] text-muted-foreground">30D Period P&L</div>
-          <div className="text-[17px] font-medium text-gain">+$32.6K</div>
-          <div className="text-[7.5px] text-gain">▴ <span className="text-muted-foreground"><span className="text-gain">+1.77%</span> return on equity · 30D</span></div>
+      <div className="mt-5 flex flex-wrap items-start gap-x-12 gap-y-3">
+        <div className="w-[42%] min-w-[320px]">
+          <div className="text-[9px] text-muted-foreground">30D Period P&L</div>
+          <div className="font-mono text-[26px] font-semibold tracking-tight text-gain">+$323.1K</div>
+          <div className="text-[8.5px] text-gain">▴ <span className="text-muted-foreground"><span className="text-gain">+8.78%</span> return on equity · 30D</span></div>
         </div>
         <div>
-          <div className="text-[8px] text-muted-foreground">Events · 30D</div>
-          <div className="text-[17px] font-medium">428</div>
-          <div className="flex gap-2 text-[7.5px] text-muted-foreground">
+          <div className="text-[9px] text-muted-foreground">Events · 30D</div>
+          <div className="text-[22px] font-medium">428</div>
+          <div className="flex gap-2 text-[8.5px] text-muted-foreground">
             <span><span className="text-brand">●</span> 62 opens</span><span><span className="text-brand">●</span> 218 adds</span>
             <span className="ml-2">148 reduces</span><span><span className="text-gain">●</span> 21 wins</span><span><span className="text-loss">●</span> 18 losses</span>
           </div>
         </div>
       </div>
       <div className="mt-2"><PnlChart /></div>
-      <div className="mt-[68px]">
+      <div className="mt-12">
         <BottomTabs />
       </div>
     </main>
@@ -442,15 +444,15 @@ function RightSidebar() {
   return (
     <aside className="border-l border-line-soft">
       <div className="border-b border-line-soft px-[14px] py-[16px]">
-        <div className="text-[11.5px] font-semibold">Telegram alerts</div>
-        <p className="mt-2 text-[8px] leading-[1.75] text-muted-foreground">Get pinged on every position open, close, and liquidation from your favourites — straight to Telegram.</p>
-        <button className="clk mt-3 flex h-[29px] w-full hover:opacity-90 items-center justify-center gap-2 rounded-full bg-light text-[9px] font-medium text-light-foreground">{I.send}Connect Telegram</button>
+        <div className="text-[12.5px] font-semibold">Telegram alerts</div>
+        <p className="mt-2 text-[9px] leading-[1.75] text-muted-foreground">Get pinged on every position open, close, and liquidation from your favourites — straight to Telegram.</p>
+        <button className="clk mt-3 flex h-[29px] w-full hover:opacity-90 items-center justify-center gap-2 rounded-full bg-light text-[10px] font-medium text-light-foreground">{I.send}Connect Telegram</button>
       </div>
       <div className="px-[14px] py-[18px]">
-        <div className="flex items-center justify-between"><span className="text-[11px] font-semibold">Favourites</span><span className="clk rounded-full border border-line bg-chip px-2.5 py-1 text-[8.5px] hover:bg-chip-strong">+ Add</span></div>
-        <div className="mt-3 text-[8px] text-muted-foreground"><b className="text-foreground">5</b> wallets tracked</div>
-        <div className="mt-3 flex h-[24px] items-center gap-2 rounded-md border border-line bg-chip px-2.5 text-[8.5px] text-muted-foreground">{I.search}Search wallet...</div>
-        <div className="mt-3 flex items-center gap-3 text-[7.5px] text-muted-foreground">
+        <div className="flex items-center justify-between"><span className="text-[12px] font-semibold">Favourites</span><span className="clk rounded-full border border-line bg-chip px-2.5 py-1 text-[9.5px] hover:bg-chip-strong">+ Add</span></div>
+        <div className="mt-3 text-[9px] text-muted-foreground"><b className="text-foreground">5</b> wallets tracked</div>
+        <div className="mt-3 flex h-[24px] items-center gap-2 rounded-md border border-line bg-chip px-2.5 text-[9.5px] text-muted-foreground">{I.search}Search wallet...</div>
+        <div className="mt-3 flex items-center gap-3 text-[8.5px] text-muted-foreground">
           SORT
           <div className="flex flex-1 rounded-full border border-line bg-chip p-[2px]">
             <span className="flex-1 rounded-full bg-chip-strong py-[3px] text-center text-foreground">Recent ↓</span>
@@ -461,13 +463,13 @@ function RightSidebar() {
       <div className="border-t border-line-soft px-[14px]">
         {favoriteWallets.map((wallet) => (
           <div key={wallet.address} className="flex items-center gap-2.5 border-b border-line-soft py-2.5">
-            <span aria-hidden="true" className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-line bg-chip text-[8px] font-semibold text-muted-foreground">{wallet.label?.slice(0, 1).toUpperCase() ?? "0x"}</span>
+            <span aria-hidden="true" className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-line bg-chip text-[9px] font-semibold text-muted-foreground">{wallet.label?.slice(0, 1).toUpperCase() ?? "0x"}</span>
             <div className="min-w-0 flex-1">
               <div className="flex items-center justify-between gap-1">
-                <span className="truncate text-[8px] font-semibold">{wallet.label ?? shortAddress(wallet.address)}</span>
-                <span className={`whitespace-nowrap text-[7.5px] ${wallet.pnl.startsWith("+") ? "text-gain" : "text-loss"}`}>{wallet.pnl}</span>
+                <span className="truncate text-[9px] font-semibold">{wallet.label ?? shortAddress(wallet.address)}</span>
+                <span className={`whitespace-nowrap text-[8.5px] ${wallet.pnl.startsWith("+") ? "text-gain" : "text-loss"}`}>{wallet.pnl}</span>
               </div>
-              <div className="mt-1 flex justify-between gap-1 text-[7px] text-muted-foreground">
+              <div className="mt-1 flex justify-between gap-1 text-[8px] text-muted-foreground">
                 <span className="truncate">{wallet.label ? shortAddress(wallet.address) : wallet.value}</span>
                 <span className="whitespace-nowrap">{wallet.activity}</span>
               </div>
@@ -481,10 +483,10 @@ function RightSidebar() {
 
 export function WalletDashboard() {
   return (
-    <div className="min-h-screen min-w-[1440px] bg-background" style={{ zoom: 1.15 }}>
+    <div className="wallet-dashboard min-h-screen min-w-[1440px] bg-background">
       <TopNav />
       <Ticker />
-      <div className="grid grid-cols-[212px_1fr_214px]">
+      <div className="grid grid-cols-[230px_minmax(0,1fr)_236px]">
         <LeftSidebar /><Main /><RightSidebar />
       </div>
     </div>
